@@ -1,0 +1,40 @@
+<?php 
+$this->title = $this->item['title'];
+$this->headTitle($this->item['title']);
+?>
+<div class="item">
+		<?php $pubdate = $this->escape(date('j F Y' ,strtotime($this->item['pubdate']))); ?>
+		<h5><span class="glyphicon glyphicon-time"></span> <?php echo $pubdate; ?></h5>
+		<p class="well" ><?php echo $this->item['introtext']; ?></p>
+		<p ><?php echo $this->item['fulltext']; ?></p>
+		
+		<div class="comments" >
+			<a name="comment" ></a>
+			<div class="row">
+				<h3 class="col-xs-7 cmhead"><span class="glyphicon glyphicon-comment"></span> Comments & Reviews</h3>
+				
+				<a href="#comment" class="cmadd btn btn-success btn-xs col-xs-4">
+					<span class="glyphicon glyphicon-plus"></span> &nbsp;Add your commment Now!
+				</a>
+			</div>
+			
+			<div class="cmlist" >
+			<?php foreach($this->comments as $comment): ?>
+				<div class="media effect2">
+				  <a class="pull-left" href="#">
+					<img src="<?php echo $this->baseUrl(); ?>/assets/images/user.png" class="media-object" style="width: 64px; height: 64px;" />
+				  </a>
+				  <div class="media-body">
+					<h4 class="media-heading"><?php echo $comment['commenter']; ?></h4>
+					<?php echo nl2br($comment['fulltext']); ?>
+				  </div>
+				</div>
+			<?php endforeach; ?>
+			</div>
+			
+			<div class="cmform" >
+				<h4>Add Your comment</h4>
+				<?php echo $this->form; ?>
+			</div>
+		</div>
+</div>

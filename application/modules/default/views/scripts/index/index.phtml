@@ -1,0 +1,17 @@
+<?php 
+$this->title = "Blog Homepage";
+$this->headTitle($this->title);
+?>
+<div class="contents">
+	<?php foreach($this->contents as $content) : ?>
+		<?php $url = $this->url(array('controller'=>'index','action'=>'display', 'id'=>$content->id)); ?>
+		<?php $pubdate = $this->escape(date('j F Y' ,strtotime($content->pubdate))); ?>
+		<div class="content jumbotron" >
+			<h1><?php echo $this->escape($content->title); ?></h1>
+			<h4><?php echo $pubdate; ?></h4>
+			<p class="lead" ><?php echo $content->introtext; ?></p>
+			<p><a class="btn btn-default" href="<?php echo $url; ?>" role="button">Read More ...</a></p>
+		</div>
+	<?php endforeach; ?>
+	
+</div>

@@ -1,0 +1,11 @@
+<?php
+// set title
+$this->title = "Login";
+$this->headTitle($this->title);
+
+if($error = $this->errorMessage)
+	echo '<div class="alert alert-danger" >' . $error. '</div>';
+
+// load login form
+$this->loginForm->setAction($this->url());
+echo $this->loginForm;

@@ -1,0 +1,79 @@
+<?php
+
+$request = Zend_Controller_Front::getInstance()->getRequest();
+
+// get module name
+$mod = $request->getParam('module');
+
+// get action name
+$action = $request->getActionName();
+
+// conditions on modules
+if($mod == 'admin')
+{
+	$headurl = $this->baseUrl() . '/admin';
+	$maintitle = 'My first Zend app / Administrator';
+	$subclass = ' admin';
+}
+elseif($mod == 'installer')
+{
+	$headurl = $this->baseUrl() . '/installer';
+	$maintitle = 'My first Zend app / Installer';
+	$subclass = ' installer';
+}
+else
+{
+	$headurl = $this->baseUrl();
+	$maintitle = 'My first Zend app';
+	$subclass = '';
+}
+
+// set head data
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle( $maintitle );
+$this->sitetitle = $maintitle;
+echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<?php echo $this->headMeta(); ?>
+	<?php echo $this->headTitle(); ?>
+	<?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/assets/css/bootstrap.min.css'); ?>
+	<?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/assets/css/narrow-theme.css'); ?>
+	<?php echo $this->headScript()->appendFile($this->baseUrl().'/assets/js/jquery.min.js'); ?>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top<?php echo $subclass; ?>" role="navigation">
+	<div class="container">
+		<a class="navbar-brand" href="<?php echo $headurl; ?>"><img src="<?php echo $this->baseUrl(); ?>/assets/images/zflogo.png" width="42" height="25" style="margin-right:10px;" /> <?php echo $this->sitetitle; ?></a>
+		
+		<?php if($mod == 'admin'): ?>
+			<?php if($action != 'login'): ?>
+			<a class="label-logout" href="<?php echo $this->baseUrl(); ?>/admin/index/logout" >
+				<span class="glyphicon glyphicon-log-out"></span> Logout
+			</a>
+			<?php endif; ?>
+			
+			<a class="label-admin label label-info" href="<?php echo $this->baseUrl(); ?>" target="_blank"> View the Site </a>
+		<?php endif; ?>
+	</div>
+</nav>
+
+<div class="container" style="padding-top: 50px;">
+	<div class="header">
+		<h3 class="text-muted"><?php echo $this->escape($this->title); ?></h3>
+	</div>
+	
+	<?php echo $this->layout()->content; ?>
+	
+	<div class="footer">
+        <p>&copy; <?php echo $this->sitetitle; ?>. Written by Soheil Novinfard</p>
+	</div>  
+</div>
+</body>
+<?php echo $this->headScript()->appendFile($this->baseUrl().'/assets/js/app.js'); ?>
+
+</html>

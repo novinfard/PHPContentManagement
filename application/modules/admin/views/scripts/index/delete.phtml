@@ -1,0 +1,17 @@
+<?php
+$this->title = "Delete a content";
+$this->headTitle($this->title);
+?>
+
+<p>Are you sure that you want to delete 
+<strong>'<?php echo $this->escape($this->content['title']); ?>'</strong> ?
+</p>
+
+<form action="<?php echo $this->url(array('action'=>'delete')); ?>" method="post">
+	<div>
+	<input type="hidden" name="id" value="<?php echo $this->content['id']; ?>" />
+	<input class="btn btn-danger" type="submit" name="del" value="Yes" />
+	<input class="btn btn-primary" type="submit" name="del" value="No" />
+	</div>
+</form>
+<p> </p>

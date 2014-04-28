@@ -1,0 +1,14 @@
+<?php 
+$this->title = "Web Installer";
+$this->headTitle($this->title);?>
+<div class="installer-block" >
+
+<h1>Database Information</h1>
+<h4>Please fill the below information:</h4>
+
+<?php if($this->errorMessage): ?>
+<div class="alert alert-danger" ><?php echo $this->errorMessage; ?></div>
+<?php endif; ?>
+
+<?php echo $this->form; ?>
+</div>

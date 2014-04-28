@@ -1,0 +1,23 @@
+<?php 
+$this->title = "Web Installer";
+$this->headTitle($this->title);?>
+<div class="installer-block" >
+
+<h1>congratulations!</h1>
+<h3>You installed the application successfully</h3>
+<div class="alert alert-warning" >DO NOT forgot to delete the "installer" module due to security reasons.</div>
+<br/>
+
+<div class="row">
+<a class="btn btn-primary col-md-3 col-md-offset-2" href="<?php echo $this->url(array('controller'=>null, 'module'=>'admin', 'action'=>null)); ?>" target="_blank"><span class="glyphicon glyphicon glyphicon-th"></span> Administrator</a>
+<a class="btn btn-success col-md-3 col-md-offset-2" href="<?php echo $this->url(array('controller'=>null, 'module'=>'default', 'action'=>null)); ?>" target="_blank"><span class="glyphicon glyphicon glyphicon-home"></span> Frontend</a>
+</div>
+
+<br/>
+<h4>Here are the administrator login information:</h4>
+<strong>Username:</strong>  <span class="label label-primary" > admin </span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<strong>Password:</strong> <span class="label label-primary"> 123 </span>
+
+<p> </p>
+</div>
